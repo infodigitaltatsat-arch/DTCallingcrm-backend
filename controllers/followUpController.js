@@ -140,6 +140,7 @@ const updateFollowUp = async(req,res)=>{
         }
 
         const {scheduledAt, notes, status} = req.body || {};
+        const updates = {};
 
         if(scheduledAt !== undefined){
             if(typeof scheduledAt !== "string" || Number.isNaN(Date.parse(scheduledAt))){
@@ -159,11 +160,11 @@ const updateFollowUp = async(req,res)=>{
                 })
             
             }
-            update.notes = notes.trim();
+            updates.notes = notes.trim();
         }
 
         if(status !== undefined){
-            if(!["Pending","Completed","Canceled"].includes(status)){
+            if(!["Pending","Completed","Cancelled"].includes(status)){
                 return res.status(400).json({
                     success:false,
                     message:"Invalid follow-up status"
@@ -181,7 +182,7 @@ const updateFollowUp = async(req,res)=>{
 
         const followUp = await FollowUp.findByIdAndUpdate(id, updates, {
             new:true,
-            runValidator:true,
+            runValidators:true,
         })
         .populate("contact", "name phone email company")
         .populate("agent", "name email");

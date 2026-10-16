@@ -22,7 +22,7 @@ const callSchema = new mongoose.Schema(
         },
         status: {
             type: String,
-            enum: ["Completed", "Missed", "Busy", "Failed"],
+            enum: ["Initialized","Completed", "Missed", "Busy", "Failed"],
             required: true,
 
         },

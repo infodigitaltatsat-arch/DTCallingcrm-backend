@@ -89,7 +89,7 @@ router.post('/', async (req, res) => {
     catch (error) {
         console.log("Create lead error:", error.message);
         if (error.name === "ValidationError") {
-            res.status(500).json({
+            return res.status(400).json({
                 success: false,
                 message: "Invalid lead data",
             });
@@ -145,7 +145,7 @@ router.patch('/:id/status', async (req, res) => {
     catch (error) {
         console.log("update lead status error:", error.message);
 
-        return ers.status(500).json({
+        return res.status(500).json({
             success: false,
             message: "Failed to update lead",
         })

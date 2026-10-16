@@ -9,7 +9,10 @@ const leadRoutes = require('./routes/LeadRoutes');
 const {protect} = require('./middleware/authMiddleware');
 const contactRoutes = require('./routes/contactRoutes')
 const callRoutes = require('./routes/callRoutes')
-
+const followUpRoutes = require('./routes/followUpRoutes')
+const dashboardRoutes = require('./routes/dashboardRoutes')
+const agentRoutes = require('./routes/agentRoutes')
+const voiceRoutes = require('./routes/voiceRoutes')
 
 
 const app = express();
@@ -24,6 +27,10 @@ app.use('/api/auth',authRoutes);
 app.use('/api/leads', leadRoutes);
 app.use('/api/contacts',contactRoutes);
 app.use('/api/calls',callRoutes);
+app.use('/api/follow-ups',followUpRoutes);
+app.use('/api/dashboard',dashboardRoutes);
+app.use('/api/agents',agentRoutes)
+app.use('/api/voice',voiceRoutes)
 
 
 

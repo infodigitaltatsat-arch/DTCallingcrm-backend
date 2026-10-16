@@ -68,7 +68,7 @@ const createCall = async (req, res) => {
 
         if (!contact || !mongoose.isValidObjectId(contact)
             || typeof phone !== "string" ||
-            !phone.trim() || !["Completed", "Missed", "Busy", "Failed"].includes(status)
+            !phone.trim() || !["Initialized","Completed", "Missed", "Busy", "Failed"].includes(status)
         ) {
             return res.status(400).json({
                 success: false,

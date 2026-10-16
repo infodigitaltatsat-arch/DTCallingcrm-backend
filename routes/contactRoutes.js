@@ -8,7 +8,7 @@ const {
     deleteContact,
 } = require('../controllers/contactController')
 
-const {protect} = require('../middleware/authMiddleware')
+const {protect, authorizeRoles} = require('../middleware/authMiddleware')
 
 const router = express.Router();
 router.use(protect)
@@ -17,6 +17,6 @@ router.get('/',getContacts);
 router.get('/:id',getContactById);
 router.post('/',createContact);
 router.patch('/:id',updateContact);
-router.delete('/:id',deleteContact);
+router.delete('/:id',authorizeRoles('admin','manager'),deleteContact);
 
 module.exports = router;

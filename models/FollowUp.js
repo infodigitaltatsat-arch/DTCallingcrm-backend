@@ -10,7 +10,7 @@ const followUpSchema = new mongoose.Schema({
 
     },
     agent: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
 
